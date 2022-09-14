@@ -61,4 +61,4 @@ export const StateContext = ({ children }) => {
     )
 }
 
-export const useStateContext = () => useContext(Context);
+export const handleStateContext = () => useContext(Context);
