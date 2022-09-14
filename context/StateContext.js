@@ -9,6 +9,8 @@ export const StateContext = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [quantity, setQuantity] = useState(1);
+    const [imageHover, setImageHover] = useState(0);
+
 
     const quantityPlus = () => {
         setQuantity(prevState => prevState + 1)
@@ -53,7 +55,9 @@ export const StateContext = ({ children }) => {
             quantityPlus,
             quantityMinus,
             addToCart,
-            setShowCart
+            setShowCart,
+            imageHover,
+            setImageHover
 
         }}>
             {children}
