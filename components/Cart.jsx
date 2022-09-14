@@ -2,12 +2,12 @@ import Link from 'next/link';
 import React, { useRef } from 'react'
 import { AiOutlineLeft, AiOutlineMinus, AiOutlinePlus, AiOutlineShopping } from 'react-icons/ai';
 import {TiDeleteOutline } from 'react-icons/ti'
-import { useStateContext } from '../context/StateContext';
+import { handleStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext();
+  const { totalPrice, totalQuantities, cartItems, setShowCart } = handleStateContext();
 
   return (
     <div className='cart-wrapper' ref={cartRef}>
