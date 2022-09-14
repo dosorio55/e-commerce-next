@@ -8,27 +8,24 @@ import { handleStateContext } from '../../context/StateContext';
 
 const productDetails = ({ product, products }) => {
 
-  // const [imageHover, setImageHover] = useState(0);
-  const { quantity, quantityPlus, quantityMinus, addToCart } = handleStateContext()
+  const { quantity, quantityPlus, quantityMinus, addToCart, setImageHover, imageHover } = handleStateContext();
 
   const { image, name, details, price } = product;
-
-  console.log(product);
 
   return (
     <div>
       <div className='product-detail-container'>
         <div>
           <div className='image-container'>
-            <img className='product-detail-image' src={urlFor(image && image[0])} alt="" />
+            <img className='product-detail-image' src={urlFor(image && image[imageHover])} alt="" />
           </div>
           <div className='small-images-container'>
             {image?.map((item, index) => (
               <img
                 key={index}
                 src={urlFor(item)}
-                className={`small-image ${index === 0 ? 'small-image selected-image' : ''}`}
-                // onMouseEnter={() => setImageHover(index)}
+                className={`small-image ${index === imageHover ? 'small-image selected-image' : ''}`}
+                onMouseEnter={() => setImageHover(index)}
               />
             ))}
           </div>
@@ -103,8 +100,6 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
-
-  console.log(product);
 
   return {
     props: { products, product }
