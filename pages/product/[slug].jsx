@@ -8,7 +8,7 @@ import { handleStateContext } from '../../context/StateContext';
 
 const productDetails = ({ product, products }) => {
 
-  const { quantity, quantityPlus, quantityMinus, addToCart, setImageHover, imageHover } = handleStateContext();
+  const { cartState, quantityPlus, quantityMinus, addToCart, setImageHover, imageHover } = handleStateContext();
 
   const { image, name, details, price } = product;
 
@@ -47,13 +47,13 @@ const productDetails = ({ product, products }) => {
           <div className='quantity'>
             <h3>Quantity:</h3>
             <p className='quantity-desc'>
-              {quantity > 1 && <span className='minus' onClick={quantityMinus}><AiOutlineMinus /></span>}
-              <span className='num'>{quantity}</span>
+              {cartState.quantity > 1 && <span className='minus' onClick={quantityMinus}><AiOutlineMinus /></span>}
+              <span className='num'>{cartState.quantity}</span>
               <span className='plus' onClick={quantityPlus}><AiOutlinePlus /></span>
             </p>
           </div>
           <div className='buttons'>
-            <button className='add-to-cart' onClick={() => addToCart(product, quantity)}>Add to Cart</button>
+            <button className='add-to-cart' onClick={() => addToCart(product, cartState.quantity)}>Add to Cart</button>
             <button className='buy-now'>Buy Now</button>
           </div>
         </div>

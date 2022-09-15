@@ -6,19 +6,19 @@ import { handleStateContext } from '../context/StateContext';
 
 const NavBar = () => {
 
-  const { showCart, setShowCart, totalQuantities } = handleStateContext();
+  const { showCart, setShowCart, cartState: { totalQuantities } } = handleStateContext();
 
   return (
     <div className="navbar-container">
       <p className="logo">
-        <Link href="/">Headphones</Link>
+        <Link href="/">Home</Link>
       </p>
 
       <button className="cart-icon" onClick={() => setShowCart(true)}>
         <AiOutlineShopping />
         <span className="cart-item-qty">{totalQuantities}</span>
       </button>
-     {showCart && <Cart />}
+      {showCart && <Cart />}
     </div>
   )
 }

@@ -20,7 +20,7 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTi
             <button>{buttonText}</button>
           </Link>
         </div>
-        <img className='footer-banner-image' src={urlFor(image)} alt={product} />
+        {/* <img className='footer-banner-image' src={urlFor(image)} alt={product} /> */}
       </div>
     </div>
   )

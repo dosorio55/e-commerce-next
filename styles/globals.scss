@@ -130,8 +130,21 @@ span.text-red {
 }
 
 .logo {
-  color: gray;
+  background-color: #f02d34;
+  border: 1px solid transparent;
+  color: white;
+  padding: .5rem;
+  border-radius: 15px;
+  
   font-size: 18px;
+
+  transition: all 0.3s;
+  
+  &:hover{
+    background-color: white;
+    border: 1px solid #f02d34;
+    color: #f02d34;
+  }
 
 }
 
