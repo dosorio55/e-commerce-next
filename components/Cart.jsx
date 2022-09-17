@@ -6,9 +6,11 @@ import { handleStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 
 const Cart = () => {
+
   const cartRef = useRef();
   const { setShowCart, deleteProduct, quantityPlus, quantityMinus, cartState: { cartItems, totalPrice, totalQuantities } } = handleStateContext();
 
+  console.log(cartItems);
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>
@@ -25,7 +27,6 @@ const Cart = () => {
             <Link href='/'>
               <button className='btn' onClick={() => setShowCart(false)}>CONTINUE SHOPPING</button>
             </Link>
-
           </div>}
 
         <div className="product-container">
@@ -33,9 +34,12 @@ const Cart = () => {
             <div className="product" key={item._id}>
               <img src={urlFor(item?.image[0])} className="cart-product-image" />
               <div className="item-desc">
-                <div className="flex top">
+                <div className="item-container flex top">
                   <h5>{item.name}</h5>
-                  <h4>${item.price}</h4>
+                  <div className='item-prices'>
+                    <p>${item.price}</p>
+                    <h4>${item.price * item.quantity}</h4>
+                  </div>
                 </div>
                 <div className="flex bottom">
                   <div>
@@ -63,7 +67,7 @@ const Cart = () => {
           <div className="cart-bottom">
             <div className="total">
               <h3>Subtotal:</h3>
-              <h3>${totalPrice}</h3>
+              <h3>${totalPrice.toFixed(2)}</h3>
             </div>
             <div className="btn-container">
               <button className="btn">

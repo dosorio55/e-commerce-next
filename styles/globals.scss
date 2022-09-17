@@ -135,12 +135,12 @@ span.text-red {
   color: white;
   padding: .5rem;
   border-radius: 15px;
-  
+
   font-size: 18px;
 
   transition: all 0.3s;
-  
-  &:hover{
+
+  &:hover {
     background-color: white;
     border: 1px solid #f02d34;
     color: #f02d34;
@@ -332,7 +332,6 @@ span.text-red {
   top: 0;
   z-index: 100;
   /* will-change: transform; */
-  transition: all 1s ease-in-out;
 
 }
 
@@ -343,6 +342,7 @@ span.text-red {
   float: right;
   padding: 40px 10px;
   position: relative;
+  transition: all 1s ease-in-out;
 
 }
 
@@ -414,6 +414,18 @@ span.text-red {
   padding: 20px;
 }
 
+.item-container {
+  padding-top: .5rem;
+
+  & h5 {
+    align-self: center;
+  }
+}
+
+.item-prices {
+  text-align: end;
+}
+
 .product .cart-product-image {
   width: 180px;
   height: 150px;
@@ -426,7 +438,6 @@ span.text-red {
   justify-content: space-between;
   width: 350px;
   color: #324d67;
-
 }
 
 .item-desc .bottom {
