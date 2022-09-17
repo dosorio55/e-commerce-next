@@ -8,7 +8,12 @@ import { handleStateContext } from '../../context/StateContext';
 
 const productDetails = ({ product, products }) => {
 
-  const { cartState, quantityPlus, quantityMinus, addToCart, setImageHover, imageHover } = handleStateContext();
+  const arrStars = new Array(5).fill(0);
+
+  const { cartState, quantityPlus, quantityMinus,
+    addToCart, setImageHover, imageHover, starsValue,
+    setStarsValue, starsHover, setStarsHover
+  } = handleStateContext();
 
   const { image, name, details, price } = product;
 
@@ -34,11 +39,17 @@ const productDetails = ({ product, products }) => {
         <div className='product-detail-desc'>
           <h1>{name}</h1>
           <div className='reviews'>
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiFillStar />
-            <AiOutlineStar />
+            {arrStars.map((star, index) =>
+              <div className='stars' key={index}
+                onClick={() => setStarsValue(index)}
+                onMouseOver={() => setStarsHover(index)}
+                onMouseLeave={() => setStarsHover(undefined)}>
+                {(starsHover || starsValue) < index ?
+                  <AiOutlineStar />
+                  : <AiFillStar />}
+              </div>
+
+            )}
             <p>(20)</p>
           </div>
           <h4>Details:</h4>

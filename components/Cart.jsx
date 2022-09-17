@@ -10,7 +10,6 @@ const Cart = () => {
   const cartRef = useRef();
   const { setShowCart, deleteProduct, quantityPlus, quantityMinus, cartState: { cartItems, totalPrice, totalQuantities } } = handleStateContext();
 
-  console.log(cartItems);
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>

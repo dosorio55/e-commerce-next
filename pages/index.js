@@ -1,9 +1,13 @@
-import React from 'react';
-import { FooterBanner, HeroBanner, Product } from '../components';
+import React, { useState } from 'react';
+import { FooterBanner, HeroBanner, Product, SearchInput } from '../components';
 
 import { client } from '../lib/client';
 
 const Home = ({ products, bannerData }) => {
+
+  const [inputSearch, setInputSearch] = useState('')
+
+  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(inputSearch));
 
   return (
     <>
@@ -14,11 +18,14 @@ const Home = ({ products, bannerData }) => {
         <p>Speakers of many variations</p>
       </div>
 
+      <div class="input-container">
+        <SearchInput inputSearch={inputSearch} setInputSearch={setInputSearch} />
+      </div>
       <div className="products-container">
-        {products?.map(product =>
+        {filteredProducts?.map(product =>
           <Product key={product._id} product={product} />)}
       </div>
-      <FooterBanner footerBanner={bannerData && bannerData[0]}/>
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   )
 }

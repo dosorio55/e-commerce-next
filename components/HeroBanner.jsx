@@ -14,11 +14,11 @@ const HeroBanner = ({heroBanner}) => {
             <h1>{largeText1}</h1>
             <img className='hero-banner-container__img' src={urlFor(image)} alt="HEADPHONES" />
         </div>
-        <div>
+        {/* <div>
           <Link href={`/product/${product}`}>
             <button className='hero-banner-container__btn'>{buttonText}</button>
           </Link>
-        </div>
+        </div> */}
         <div className='desc'>
           <h5>Description</h5>
           <p>{desc}</p>
