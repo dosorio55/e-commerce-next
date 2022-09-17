@@ -6,14 +6,14 @@ import { BsLinkedin } from 'react-icons/bs';
 const Footer = () => {
   return (
     <div className="footer-container">
-      <p>All rights reserverd</p>
+      <p>About Me</p>
       <p className="icons">
-        <Link href={'/'}>
-          <AiFillGithub size={30}/>
-        </Link>
-        <Link href=''>
-          <BsLinkedin size={30}/>
-        </Link>
+        <a href="https://github.com/dosorio55">
+          <AiFillGithub size={30} />
+        </a>
+        <a href="https://www.linkedin.com/in/diego-osorio-ruiz-30533a241/">
+          <BsLinkedin size={30} />
+        </a>
       </p>
     </div>
   )

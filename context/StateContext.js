@@ -47,6 +47,8 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
     const [imageHover, setImageHover] = useState(0);
+    const [starsValue, setStarsValue] = useState(3);
+    const [starsHover, setStarsHover] = useState(undefined);
 
     const [cartState, dispatchCartState] = useReducer(cartReducer, initialState);
 
@@ -153,7 +155,11 @@ export const StateContext = ({ children }) => {
             setShowCart,
             imageHover,
             setImageHover,
-            deleteProduct
+            deleteProduct,
+            starsValue,
+            setStarsValue,
+            starsHover,
+            setStarsHover
         }}>
             {children}
         </Context.Provider>
