@@ -22,7 +22,6 @@ a {
   max-width: 1400px;
   margin: auto;
   width: 100%;
-
 }
 
 .layout {
@@ -34,7 +33,6 @@ a {
 .hero-banner-container {
   padding: 100px 40px;
   background-color: #dcdcdc;
-  ;
   border-radius: 15px;
   position: relative;
   height: 500px;
@@ -73,11 +71,21 @@ a {
   &__img {
     position: absolute;
     top: 0%;
-    right: 20%;
+    right: 5%;
     width: 450px;
     height: 450px;
   }
 }
+
+@media screen and (max-width:800px) {
+  .hero-banner-container__img {
+    width: 250px;
+    height: 250px;
+    top: 35%;
+  }
+}
+
+
 
 /* ---------------------------- NAVBAR ------------------------ */
 
@@ -180,7 +188,7 @@ span.text-red {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 2rem;
   margin-top: 20px;
   width: 100%;
 }
@@ -555,6 +563,10 @@ span.text-red {
   align-items: center;
 }
 
+.stars{
+  cursor: pointer;
+}
+
 .product-detail-desc h4 {
   margin-top: 10px;
 }
@@ -919,5 +931,48 @@ span.text-red {
   .btn-container {
     width: 300px;
     margin: auto;
+  }
+}
+
+/* input search */
+
+.input-container {
+  margin-top: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  // background: #000;
+}
+
+.search-bar {
+  width: 25rem;
+  background: #fcd9da;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .7rem;
+
+  & input {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    // padding: 24px 20px;
+    font-size: 20px;
+    color: black;
+  }
+
+  & svg {
+    margin-right: 5px;
+    font-size: 20px;
+    color: #f02d34;
+  }
+}
+
+@media screen and (max-width:800px) {
+  .input-container {
+    display: flex;
+    justify-content: center;
   }
 }

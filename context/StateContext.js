@@ -111,10 +111,8 @@ export const StateContext = ({ children }) => {
                 cartItems: modifiedItems,
                 totalQuantities: totalQuantities - quantityDeleted,
                 totalPrice: cartState.totalPrice - itemPrice
-
             }
         })
-
     }
 
     const addToCart = (product, quantity) => {
