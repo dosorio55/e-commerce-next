@@ -18,7 +18,7 @@ const Home = ({ products, bannerData }) => {
         <p>Speakers of many variations</p>
       </div>
 
-      <div class="input-container">
+      <div className="input-container">
         <SearchInput inputSearch={inputSearch} setInputSearch={setInputSearch} />
       </div>
       <div className="products-container">
