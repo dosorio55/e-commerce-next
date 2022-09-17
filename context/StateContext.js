@@ -10,7 +10,6 @@ const initialState = {
 };
 
 const cartReducer = (prevState, action) => {
-    // console.log(action.payload);
     switch (action.type) {
         case 'QUANTITY_PLUS':
             return {
@@ -27,13 +26,17 @@ const cartReducer = (prevState, action) => {
             };
         case 'ITEM_CART':
             return {
-                ...prevState, cartItems: action.payload
+                ...prevState, cartItems: action.payload.cartItems,
+                totalQuantities: action.payload.totalQuantities,
+                totalPrice: action.payload.totalPrice
             };
         case 'DELETE_ITEM':
             return {
-                ...prevState, cartItems: action.payload
+                ...prevState,
+                cartItems: action.payload.cartItems,
+                totalQuantities: action.payload.totalQuantities,
+                totalPrice: action.payload.totalPrice
             }
-
         default:
             break;
     }
@@ -49,15 +52,23 @@ export const StateContext = ({ children }) => {
 
     const { cartItems, totalQuantities } = cartState;
 
+    let itemPrice;
     const quantityPlus = (productId, actionType) => {
         if (actionType === 'ITEM_CART') {
             const modifiedItems = cartItems.map((item) => {
                 if (item._id === productId) {
+                    itemPrice = item.price
                     return { ...item, quantity: item.quantity + 1 }
                 }
                 return item
             })
-            dispatchCartState({ type: actionType, payload: modifiedItems })
+            dispatchCartState({
+                type: actionType,
+                payload: {
+                    cartItems: modifiedItems, totalQuantities: totalQuantities + 1,
+                    totalPrice: cartState.totalPrice + itemPrice
+                }
+            })
             return
         };
         dispatchCartState({ type: 'QUANTITY_PLUS' })
@@ -67,20 +78,42 @@ export const StateContext = ({ children }) => {
         if (actionType === 'ITEM_CART') {
             const modifiedItems = cartItems.map((item) => {
                 if (item._id === productId) {
+                    itemPrice = item.price;
                     return { ...item, quantity: item.quantity - 1 }
                 }
                 return item
             })
-            dispatchCartState({ type: actionType, payload: modifiedItems })
+            dispatchCartState({
+                type: actionType,
+                payload: {
+                    cartItems: modifiedItems, totalQuantities: totalQuantities - 1,
+                    totalPrice: cartState.totalPrice - itemPrice,
+                }
+            })
             return
         }
-        dispatchCartState({ type: 'QUANTITY_MINUS' })
+        dispatchCartState({ type: 'QUANTITY_MINUS' });
     }
 
     const deleteProduct = (productId) => {
-        const modifiedItems = cartItems.filter((item) => item._id !== productId);
-        console.log(modifiedItems);
-        dispatchCartState({ type: 'DELETE_ITEM', payload: modifiedItems })
+        let quantityDeleted;
+        const modifiedItems = cartItems.filter((item) => {
+            if (item._id !== productId) {
+                return item
+            }
+            quantityDeleted = item.quantity;
+            itemPrice = item.price * quantityDeleted
+        }
+        );
+        dispatchCartState({
+            type: 'DELETE_ITEM',
+            payload: {
+                cartItems: modifiedItems,
+                totalQuantities: totalQuantities - quantityDeleted,
+                totalPrice: cartState.totalPrice - itemPrice
+
+            }
+        })
 
     }
 
