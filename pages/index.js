@@ -7,7 +7,7 @@ const Home = ({ products, bannerData }) => {
 
   const [inputSearch, setInputSearch] = useState('')
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(inputSearch));
+  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(inputSearch.toLowerCase()));
 
   return (
     <>
